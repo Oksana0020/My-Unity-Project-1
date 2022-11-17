@@ -13,11 +13,11 @@ public class cubectrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.Space))
         {
  transform.position += Vector3.back*Time.deltaTime;
-        }
-       
         
+        }
+ //   if(Input.GetKey(KeyCode.RightArrow))//
     }
 }
