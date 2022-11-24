@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class XWingControl : MonoBehaviour
 {
+    public GameObject MissileCloneTemplate;
+
     Vector3 velocity, accelaration;
     float rotationspeed = 180;
     // Start is called before the first frame update
@@ -30,7 +33,20 @@ public class XWingControl : MonoBehaviour
             transform.Rotate(new Vector3(1, 0, 0), rotationspeed * Time.deltaTime);
 
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            fireMissile();
+
+    }
+
         velocity += accelaration * Time.deltaTime;
         transform.position += velocity * Time.deltaTime;
+
+    }
+
+    private void fireMissile()
+    {
+        Instantiate(MissileCloneTemplate, transform.position, transform.rotation);
     }
 }
