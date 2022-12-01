@@ -24,11 +24,25 @@ public class XWingControl : MonoBehaviour
 
         }
         if (Input.GetKey(KeyCode.RightArrow))
+
+        {
+            transform.Rotate(new Vector3(0, 0, -1), rotationspeed * Time.deltaTime);
+
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Rotate(new Vector3(0, 0, 1), rotationspeed * Time.deltaTime);
 
         }
+
         if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Rotate(new Vector3(-1, 0, 0), rotationspeed * Time.deltaTime);
+
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             transform.Rotate(new Vector3(1, 0, 0), rotationspeed * Time.deltaTime);
 

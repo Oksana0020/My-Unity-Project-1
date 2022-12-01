@@ -20,28 +20,23 @@ public class missilescript : MonoBehaviour
         transform.position += MissileSpeed * transform.forward * Time.deltaTime;
     }
 
-    public float fireInterval = 2f;
-    private bool canFire = true;
 
-    public void onRButtonClicked()
+
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (canFire)
-        {
-            FireRockets();
-            canFire = false;
+        print("I hit something");
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
+    }
 
-            StartCoroutine(ReloadDelay());
+    void Explode ()
+    {
+        float explosionRadius = 1;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider collider in colliders)
+        {
+            Destroy(collider.transform);
         }
     }
-
-    private string ReloadDelay()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void FireRockets()
-    {
-
-    }
-
 }
