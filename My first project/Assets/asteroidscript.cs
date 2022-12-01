@@ -10,7 +10,7 @@ public class asteroidscript : MonoBehaviour
     float speed, speedRoation;
     float MAXSPEED = 5, MINSPEED = 10;
     private float maxDistance = 300;
-    private float maxAsteroidSize = 10;
+    private float maxAsteroidSize = 100;
 
     // Start is called before the first frame update
     void Start()
