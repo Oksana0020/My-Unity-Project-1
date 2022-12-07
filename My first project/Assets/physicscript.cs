@@ -15,7 +15,7 @@ public class physicscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetKeyDown(KeyCode.UpArrow))
+       if (Input.GetKeyDown(KeyCode.T))
         {
             ourRigidBody.AddExplosionForce(1000,
                 transform.position + Vector3.down + Vector3.back,
@@ -31,7 +31,7 @@ public class physicscript : MonoBehaviour
         if (planeHit)
         { 
             print("I hit Plane");
-        planeHit.processHit();
+    //    planeHit.processHit();
         }
         else
          
