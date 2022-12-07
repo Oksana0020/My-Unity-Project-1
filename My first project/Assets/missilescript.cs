@@ -29,7 +29,7 @@ public class missilescript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("I hit something");
+        print("Oops I hit something");
         Destroy(collision.gameObject);
         Destroy(gameObject);
     }
