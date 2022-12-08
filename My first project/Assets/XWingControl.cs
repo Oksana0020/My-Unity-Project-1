@@ -6,6 +6,10 @@ using UnityEngine;
 public class XWingControl : MonoBehaviour
 {
     public GameObject MissileCloneTemplate;
+    public float forwardSpeed = 25f, strafeSpeed = 7.5f, hoverSpeed = 5f;
+    public float activeforwardSpeed, activestrafeSpeed, activeHoverSpeed;
+    private float activeshoverSpeed;
+    private float forwardAcceleration = 2.5f, strafeAcceleration = 2f, hoverAcceleration = 2f;
 
     Vector3 velocity, accelaration;
     float rotationspeed = 180;
@@ -57,6 +61,15 @@ public class XWingControl : MonoBehaviour
         velocity += accelaration * Time.deltaTime;
         transform.position += velocity * Time.deltaTime;
 
+    }
+
+    private void FixedUpdate()
+    {
+        activeforwardSpeed = Mathf.Lerp(activeforwardSpeed, Input.GetAxisRaw("Vertical") * forwardSpeed, forwardAcceleration * Time.deltaTime);
+        activestrafeSpeed = Mathf.Lerp(activestrafeSpeed, Input.GetAxisRaw("Horizontal") * strafeSpeed, strafeAcceleration * Time.deltaTime);
+        
+        transform.position += transform.forward * activeforwardSpeed * Time.deltaTime;
+        transform.position += (transform.right * activestrafeSpeed * Time.deltaTime) + (transform.up * activeHoverSpeed * Time.deltaTime);
     }
 
     private void fireMissile()
