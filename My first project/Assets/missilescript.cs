@@ -9,6 +9,7 @@ public class missilescript : MonoBehaviour
     float MissileSpeed = 30f;
     private float power;
     private float radius;
+    private object explosion;
 
     public object Explosion { get; private set; }
 
@@ -29,10 +30,17 @@ public class missilescript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        print("I hit something");
         print("Oops I hit something");
         Destroy(collision.gameObject);
         Destroy(gameObject);
     }
+
+    private void Destroy(object gameObject)
+    {
+        throw new NotImplementedException();
+    }
+
 
     public void Explode()
     {
@@ -60,4 +68,24 @@ public class missilescript : MonoBehaviour
     {
         throw new NotImplementedException();
     }
+
+// Applies an explosion force to all nearby rigidbodies
+public class ExampleClass : MonoBehaviour
+{
+    public float radius = 5.0F;
+    public float power = 10.0F;
+
+    void Start()
+    {
+        Vector3 explosionPos = transform.position;
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+
+            if (rb != null)
+                rb.AddExplosionForce(power, explosionPos, radius, 5.0F);
+        }
+    }
+}
 }
